@@ -1,0 +1,46 @@
+SM1 - Firebase / FCM
+====================
+
+Package Android:
+com.softmobile.sm1
+
+Topico coletivo fixo:
+sm1_all
+
+PREPARACAO
+----------
+1. Cadastre no Firebase um app Android com package com.softmobile.sm1
+2. Baixe google-services.json
+3. Coloque google-services.json na raiz deste projeto, ao lado de config.xml
+4. Nao adicione o topico ao google-services.json
+
+COMO FUNCIONA
+-------------
+O Firebase gera automaticamente um token FCM diferente para cada instalacao do APK.
+O usuario nao digita e nao fornece esse token.
+
+Ao iniciar, o SM1:
+1. solicita permissao de notificacoes;
+2. obtem o token FCM automaticamente;
+3. inscreve o aparelho no topico sm1_all;
+4. envia o token para a REST de registro configurada no aparelho;
+5. abre a URL retornada pela REST de redirecionamento.
+
+POST <REST_PUSH>
+Content-Type: application/json
+
+{
+  "app": "SM1",
+  "token": "TOKEN_FCM_DESTA_INSTALACAO",
+  "topic": "sm1_all",
+  "platform": "android",
+  "packageId": "com.softmobile.sm1"
+}
+
+A REST nao fornece o token e nao precisa fornecer o topico.
+Ela pode apenas registrar o token e responder HTTP 200/201/204.
+
+Para envio coletivo, envie a mensagem FCM ao topico:
+sm1_all
+
+Quando o Firebase renovar o token de uma instalacao, o SM1 tenta registrar novamente o novo token na REST e reafirma a inscricao no topico sm1_all.

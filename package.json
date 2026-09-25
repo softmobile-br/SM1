@@ -1,0 +1,31 @@
+{
+  "name": "com.softmobile.sm1",
+  "displayName": "SM1",
+  "version": "1.4.0",
+  "description": "SM1 - Cordova shell with SoftMobile splash, persistent REST configuration, automatic FCM token and fixed sm1_all topic.",
+  "scripts": {
+    "build": "cordova build android",
+    "prepare": "cordova prepare android"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-inappbrowser": {},
+      "cordova-plugin-firebasex-core": {},
+      "cordova-plugin-firebasex-messaging": {},
+      "cordova-plugin-nativestorage": {},
+      "cordova-plugin-device": {}
+    },
+    "platforms": [
+      "android"
+    ]
+  },
+  "devDependencies": {
+    "cordova": "13.0.0",
+    "cordova-android": "15.1.0",
+    "cordova-plugin-device": "3.0.0",
+    "cordova-plugin-firebasex-core": "2.0.1",
+    "cordova-plugin-firebasex-messaging": "2.0.3",
+    "cordova-plugin-inappbrowser": "6.0.0",
+    "cordova-plugin-nativestorage": "2.3.2"
+  }
+}

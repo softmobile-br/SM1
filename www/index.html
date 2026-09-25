@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'self' data: gap: https://ssl.gstatic.com; style-src * 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src *; img-src * data: content:;">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="stylesheet" href="css/index.css">
+  <title>SM1</title>
+</head>
+<body>
+  <div id="app" class="app-shell">
+    <!-- Splash fica visível desde o primeiro frame do WebView. -->
+    <section id="splashScreen" class="screen splash-screen active" aria-label="Inicialização SoftMobile">
+      <div class="splash-glow splash-glow-one"></div>
+      <div class="splash-glow splash-glow-two"></div>
+      <div class="splash-content">
+        <div class="brand-stage">
+          <img class="brand-logo splash-logo" src="img/softmobile-logo.png" alt="SoftMobile">
+        </div>
+        <div class="splash-copy">
+          <span class="product-pill">SM1</span>
+          <p>Conectando sua aplicação</p>
+        </div>
+        <div class="loader" aria-hidden="true"><span></span><span></span><span></span></div>
+      </div>
+      <p class="splash-footer">SoftMobile</p>
+    </section>
+
+    <!-- Só aparece quando as RESTs ainda não existem no aparelho. -->
+    <section id="configScreen" class="screen config-screen" aria-label="Configuração inicial">
+      <div class="config-page">
+        <header class="config-header">
+          <img class="brand-logo header-logo" src="img/softmobile-logo.png" alt="SoftMobile">
+          <div class="app-badge">SM1</div>
+        </header>
+
+        <main class="config-content">
+          <div class="intro-block">
+            <span class="eyebrow">CONFIGURAÇÃO INICIAL</span>
+            <h1>Conecte o SM1 aos seus serviços</h1>
+            <p>Informe as duas APIs REST uma única vez. O token FCM é obtido automaticamente pelo app e cada instalação entra no tópico coletivo <strong>sm1_all</strong>.</p>
+          </div>
+
+          <form id="settingsForm" class="settings-card" novalidate>
+            <div class="field-group">
+              <label for="redirectRest">
+                <span class="field-number">01</span>
+                <span>
+                  <strong>REST de redirecionamento</strong>
+                  <small>Informa qual endereço web o SM1 deve abrir.</small>
+                </span>
+              </label>
+              <div class="input-wrap">
+                <span class="input-icon" aria-hidden="true">↗</span>
+                <input id="redirectRest" type="url" inputmode="url" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="https://servidor/api/sm1/destino">
+              </div>
+              <p class="field-help">GET · resposta aceita: URL em texto ou JSON <code>{ "url": "https://..." }</code>.</p>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="field-group">
+              <label for="pushRest">
+                <span class="field-number">02</span>
+                <span>
+                  <strong>REST de notificações</strong>
+                  <small>Recebe automaticamente o token FCM gerado pelo Firebase para esta instalação.</small>
+                </span>
+              </label>
+              <div class="input-wrap">
+                <span class="input-icon" aria-hidden="true">●</span>
+                <input id="pushRest" type="url" inputmode="url" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="https://servidor/api/sm1/push">
+              </div>
+              <p class="field-help">POST · o SM1 envia o token FCM automaticamente. O tópico coletivo é fixo: <code>sm1_all</code>.</p>
+            </div>
+
+            <div id="configMessage" class="message-box" role="status" aria-live="polite"></div>
+
+            <button id="saveSettings" class="primary-button" type="submit">
+              <span>Salvar e iniciar</span>
+              <span class="button-arrow" aria-hidden="true">→</span>
+            </button>
+
+            <p class="privacy-note">As URLs são armazenadas localmente no aparelho. Nenhuma configuração é enviada para a SoftMobile.</p>
+          </form>
+        </main>
+
+        <footer class="config-footer">SM1 · Cordova</footer>
+      </div>
+    </section>
+
+    <!-- Estado técnico exibido apenas durante carga/erro. -->
+    <section id="loadingScreen" class="screen loading-screen" aria-label="Carregando aplicação">
+      <div class="loading-card">
+        <img class="brand-logo loading-logo" src="img/softmobile-logo.png" alt="SoftMobile">
+        <div class="progress-ring" aria-hidden="true"></div>
+        <h2 id="loadingTitle">Preparando aplicação</h2>
+        <p id="loadingStatus">Carregando configurações...</p>
+        <p id="pushStatus" class="push-status">Push: aguardando</p>
+        <div id="errorActions" class="error-actions hidden">
+          <button id="retryButton" class="primary-button compact" type="button">Tentar novamente</button>
+          <button id="editSettingsButton" class="secondary-button" type="button">Configurações</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="cordova.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>

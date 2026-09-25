@@ -1,0 +1,7 @@
+{
+  "app": "SM1",
+  "token": "TOKEN_FCM_DESTA_INSTALACAO",
+  "topic": "sm1_all",
+  "platform": "android",
+  "packageId": "com.softmobile.sm1"
+}

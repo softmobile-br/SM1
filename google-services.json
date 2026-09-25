@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "671235630977",
+    "project_id": "softmobile-52c0f",
+    "storage_bucket": "softmobile-52c0f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:671235630977:android:a06c5c310eb925dc12ea80",
+        "android_client_info": {
+          "package_name": "com.softmobile.sm1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCc3ZixoY_jjq4k7oaiv4Y2FNrc5lEr7Ww"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
