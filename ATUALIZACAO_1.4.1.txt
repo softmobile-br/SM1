@@ -1,0 +1,43 @@
+SM1 1.4.1 - ATUALIZACAO ANDROID
+================================
+
+ALTERACOES
+
+1. Icone Android
+   - Logotipo SoftMobile original, sem distorcao.
+   - A proporcao da imagem foi preservada.
+   - Foi acrescentado somente espaco branco para formar o quadro exigido pelo Android.
+   - Foram geradas as densidades ldpi, mdpi, hdpi, xhdpi, xxhdpi e xxxhdpi.
+
+2. Botao Voltar
+   - O Android nao percorre mais o historico interno do InAppBrowser.
+   - Ao pressionar Voltar, a janela e fechada e reaberta diretamente na URL-base retornada pela REST de redirecionamento.
+   - Trocas programaticas de URL, inclusive por push, nao criam reaberturas duplicadas.
+
+PRESERVADO
+
+- Chave de armazenamento: sm1.settings.v1.
+- Configuracao persistente via NativeStorage/localStorage.
+- Splash e telas existentes.
+- Registro do token FCM e topico sm1_all.
+- RESTs de redirecionamento e notificacoes.
+
+COMO SUBSTITUIR
+
+1. Feche ferramentas que estejam usando a pasta do projeto.
+2. Extraia o ZIP de substituicao na raiz do SM1 e confirme a substituicao dos arquivos.
+3. Execute:
+
+   npm install
+   npx cordova platform rm android
+   npx cordova platform add android
+   npx cordova build android
+
+O arquivo google-services.json existente deve continuar na raiz do projeto.
+
+VALIDACAO MANUAL RECOMENDADA
+
+1. Instale o APK sem limpar os dados do app e confirme que as RESTs continuam gravadas.
+2. Aguarde o redirecionamento para a URL retornada pela REST.
+3. Navegue dentro do site e pressione Voltar no Android.
+4. Confirme que o app abre a URL-base da REST, sem exibir a tela SoftMobile e sem travar.

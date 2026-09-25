@@ -1,13 +1,24 @@
 {
   "name": "com.softmobile.sm1",
   "displayName": "SM1",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "SM1 - Cordova shell with SoftMobile splash, persistent REST configuration, automatic FCM token and fixed sm1_all topic.",
   "cordova": {
     "plugins": {
       "cordova-plugin-inappbrowser": {},
-      "cordova-plugin-firebasex-core": {},
-      "cordova-plugin-firebasex-messaging": {},
+      "cordova-plugin-firebasex-core": {
+        "ANDROID_FIREBASE_CORE_VERSION": "21.1.1",
+        "ANDROID_FIREBASE_INSTALLATIONS_VERSION": "19.1.0",
+        "ANDROID_GSON_VERSION": "2.14.0"
+      },
+      "cordova-plugin-firebasex-messaging": {
+        "FIREBASE_FCM_AUTOINIT_ENABLED": "true",
+        "FIREBASE_MESSAGING_IMMEDIATE_PAYLOAD_DELIVERY": "false",
+        "IOS_FCM_ENABLED": "true",
+        "IOS_ENABLE_CRITICAL_ALERTS_ENABLED": "false",
+        "ANDROID_ICON_ACCENT": "#FFFFFF",
+        "ANDROID_FIREBASE_MESSAGING_VERSION": "25.0.2"
+      },
       "cordova-plugin-nativestorage": {},
       "cordova-plugin-device": {}
     },
@@ -17,7 +28,7 @@
   },
   "devDependencies": {
     "cordova": "13.0.0",
-    "cordova-android": "15.1.0",
+    "cordova-android": "^15.1.0",
     "cordova-plugin-device": "3.0.0",
     "cordova-plugin-firebasex-core": "2.0.1",
     "cordova-plugin-firebasex-messaging": "2.0.3",

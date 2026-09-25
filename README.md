@@ -1,4 +1,4 @@
-# SM1 1.4.0
+# SM1 1.4.1
 
 Aplicativo casca 100% Cordova da SoftMobile.
 
@@ -14,6 +14,11 @@ Aplicativo casca 100% Cordova da SoftMobile.
 6. O SM1 se inscreve automaticamente no topico FCM fixo `sm1_all`.
 7. O SM1 envia o token individual para a REST de registro e abre automaticamente a URL obtida pela REST de redirecionamento.
 8. Nas proximas execucoes, a tela de configuracao nao e exibida.
+9. O botao Voltar do Android nao percorre o historico interno do redirecionamento; ele reabre a URL-base indicada pela REST.
+
+## Icone Android
+
+Os icones de launcher ficam em `res/icon/android/` e sao gerados a partir do logotipo oficial SoftMobile. O `config.xml` associa cada arquivo a sua densidade Android.
 
 ## REST de redirecionamento
 

@@ -10,6 +10,7 @@
   let settings = { redirectRest: '', pushRest: '' };
   let startUrl = '';
   let browserRef = null;
+  let reopenTimer = null;
   let splashStartedAt = Date.now();
   let starting = false;
 
@@ -307,6 +308,35 @@
     return token;
   }
 
+  function scheduleDestinationReopen() {
+    if (reopenTimer) clearTimeout(reopenTimer);
+
+    reopenTimer = setTimeout(function () {
+      reopenTimer = null;
+      if (!browserRef && isHttpUrl(startUrl)) openExternalUrl(startUrl);
+    }, 180);
+  }
+
+  function bindBrowserNavigation(browser, openedUrl) {
+    if (!browser || typeof browser.addEventListener !== 'function') return;
+
+    browser.addEventListener('exit', function () {
+      if (browserRef === browser) browserRef = null;
+
+      // A troca programatica de janela nao representa o botao Voltar.
+      if (browser.__sm1ClosingForReplacement) return;
+
+      // Com hardwareback=no, o Android fecha o InAppBrowser em vez de
+      // percorrer seu historico. Reabrimos sempre a URL-base fornecida
+      // pela REST, evitando voltar para a tela interna do SM1.
+      scheduleDestinationReopen();
+    });
+
+    browser.addEventListener('loaderror', function (event) {
+      console.error('SM1 InAppBrowser loaderror:', openedUrl, event);
+    });
+  }
+
   function openExternalUrl(overrideUrl) {
     const url = String(overrideUrl || startUrl || '').trim();
     if (!isHttpUrl(url)) throw new Error('URL da aplicação inválida.');
@@ -315,7 +345,7 @@
       'location=no',
       'toolbar=no',
       'zoom=no',
-      'hardwareback=yes',
+      'hardwareback=no',
       'hideurlbar=yes',
       'hidenavigationbuttons=yes',
       'clearcache=no',
@@ -323,7 +353,10 @@
     ].join(',');
 
     if (browserRef && typeof browserRef.close === 'function') {
-      try { browserRef.close(); } catch (_) {}
+      try {
+        browserRef.__sm1ClosingForReplacement = true;
+        browserRef.close();
+      } catch (_) {}
     }
 
     if (window.cordova && cordova.InAppBrowser && cordova.InAppBrowser.open) {
@@ -331,6 +364,8 @@
     } else {
       browserRef = window.open(url, '_blank', features);
     }
+
+    bindBrowserNavigation(browserRef, url);
   }
 
   async function runConfiguredApp() {
@@ -428,6 +463,12 @@
   settingsForm.addEventListener('submit', saveAndStart);
   retryButton.addEventListener('click', runConfiguredApp);
   editSettingsButton.addEventListener('click', function () { showConfiguration(true); });
+
+  document.addEventListener('backbutton', function (event) {
+    if (!isHttpUrl(startUrl)) return;
+    event.preventDefault();
+    if (!browserRef) openExternalUrl(startUrl);
+  }, false);
 
   document.addEventListener('deviceready', start, false);
 }());

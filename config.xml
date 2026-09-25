@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.softmobile.sm1"
-        version="1.4.0"
+        version="1.4.1"
         xmlns="http://www.w3.org/ns/widgets"
         xmlns:cdv="http://cordova.apache.org/ns/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android">
@@ -24,6 +24,12 @@
     <preference name="AndroidLaunchMode" value="singleTask" />
 
     <platform name="android">
+        <icon src="res/icon/android/icon-36-ldpi.png" density="ldpi" />
+        <icon src="res/icon/android/icon-48-mdpi.png" density="mdpi" />
+        <icon src="res/icon/android/icon-72-hdpi.png" density="hdpi" />
+        <icon src="res/icon/android/icon-96-xhdpi.png" density="xhdpi" />
+        <icon src="res/icon/android/icon-144-xxhdpi.png" density="xxhdpi" />
+        <icon src="res/icon/android/icon-192-xxxhdpi.png" density="xxxhdpi" />
         <config-file target="AndroidManifest.xml" parent="/*">
             <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
         </config-file>
