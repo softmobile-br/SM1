@@ -1,4 +1,4 @@
-# SM1 1.4.1
+# SM1 1.4.2
 
 Aplicativo casca 100% Cordova da SoftMobile.
 

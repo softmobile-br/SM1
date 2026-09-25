@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.softmobile.sm1"
-        version="1.4.1"
+        version="1.4.2"
         xmlns="http://www.w3.org/ns/widgets"
         xmlns:cdv="http://cordova.apache.org/ns/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android">
 
     <name>SM1</name>
-    <description>Softmobile Cordova shell app</description>
+    <description>Aplicativo SoftMobile SM1</description>
     <author email="contato@softmobile.com.br">Softmobile</author>
 
     <content src="index.html" />
@@ -24,6 +24,9 @@
     <preference name="AndroidLaunchMode" value="singleTask" />
 
     <platform name="android">
+        <preference name="AndroidWindowSplashScreenAnimatedIcon" value="res/screen/android/softmobile-splash-1024.png" />
+        <preference name="AndroidWindowSplashScreenBackground" value="#FFFFFF" />
+        <preference name="AndroidWindowSplashScreenIconBackgroundColor" value="#FFFFFF" />
         <icon src="res/icon/android/icon-36-ldpi.png" density="ldpi" />
         <icon src="res/icon/android/icon-48-mdpi.png" density="mdpi" />
         <icon src="res/icon/android/icon-72-hdpi.png" density="hdpi" />

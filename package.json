@@ -1,8 +1,8 @@
 {
   "name": "com.softmobile.sm1",
   "displayName": "SM1",
-  "version": "1.4.1",
-  "description": "SM1 - Cordova shell with SoftMobile splash, persistent REST configuration, automatic FCM token and fixed sm1_all topic.",
+  "version": "1.4.2",
+  "description": "SM1 - aplicativo SoftMobile com splash, configuração REST persistente, token FCM automático e tópico fixo sm1_all.",
   "cordova": {
     "plugins": {
       "cordova-plugin-inappbrowser": {},

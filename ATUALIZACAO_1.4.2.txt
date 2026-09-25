@@ -1,0 +1,12 @@
+SM1 1.4.2 - IDENTIDADE VISUAL
+================================
+
+- Remove a identificacao visual Cordova do rodape do aplicativo.
+- Define explicitamente a arte SoftMobile na splash nativa do Android.
+- Mantem o logotipo SoftMobile proporcional, sem distorcao.
+- Mantem os icones Android SoftMobile em todas as densidades.
+- Preserva configuracao persistente, push, splash HTML e redirecionamento.
+
+As referencias internas ao Cordova em dependencias, comandos e namespaces sao
+tecnicas e necessarias para o funcionamento do aplicativo. Elas nao sao exibidas
+ao usuario.
