@@ -3,10 +3,6 @@
   "displayName": "SM1",
   "version": "1.4.0",
   "description": "SM1 - Cordova shell with SoftMobile splash, persistent REST configuration, automatic FCM token and fixed sm1_all topic.",
-  "scripts": {
-    "build": "cordova build android",
-    "prepare": "cordova prepare android"
-  },
   "cordova": {
     "plugins": {
       "cordova-plugin-inappbrowser": {},
